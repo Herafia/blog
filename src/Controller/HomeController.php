@@ -22,5 +22,6 @@
 			return $this->render('Home/home.html.twig');
 			
 		}
+		
 	}
 	
