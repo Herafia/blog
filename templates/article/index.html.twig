@@ -17,7 +17,7 @@
 
             <div class="card" style="width: 18rem;">
             <div class="card-header" style="font-size: x-large;">
-                {{ category.owner.name }}
+                <a href="/category/{{ category.owner.id }}">{{ category.owner.name }}</a>
             </div>
             {% for article in category %}
                 <ul class="list-group list-group-flush">
