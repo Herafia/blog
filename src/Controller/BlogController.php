@@ -64,4 +64,4 @@ class BlogController extends AbstractController
 		}
 	}
 
-
+	
