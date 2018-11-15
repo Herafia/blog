@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\CategoryType;
 use App\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,8 +14,13 @@ class CategoryController extends AbstractController
      */
     public function index()
     {
+	
+	    $category = new Category();
+	    $form = $this->createForm(CategoryType::class, $category);
+	    
         return $this->render('category/index.html.twig', [
             'controller_name' => 'CategoryController',
+	        'form' => $form->createView(),
         ]);
     }
 	

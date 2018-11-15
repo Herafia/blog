@@ -39,4 +39,5 @@ class ArticleController extends AbstractController
 			'tableau' => $tableau
         ]);
     }
+    
 }

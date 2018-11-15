@@ -3,5 +3,10 @@
 {% block title %}Hello Laura !{% endblock %}
 
 {% block body %}
-    {{ category.name }}
+
+    {{ form_start(form) }}
+    {{ form_row(form.name) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+
 {% endblock %}
