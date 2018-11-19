@@ -71,5 +71,20 @@ class ArticleController extends AbstractController
 		    'form' => $form->createView(),
 	    ]);
     }
+	
+	/**
+	 * @param Article $article
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 * @route ("article/{id}", name="article_show")
+	 */
+	
+    public function show(Article $article)
+    {
+    	$tags = $article->getTags();
+    	return $this->render('article/show.html.twig', [
+    	    'article' => $article,
+		    'tags' => $tags,
+	    ]);
+    }
     
 }
