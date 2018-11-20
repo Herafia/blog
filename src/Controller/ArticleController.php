@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\Category;
+use App\Service\Slugify;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\ArticleType;
@@ -47,7 +48,7 @@ class ArticleController extends AbstractController
 	 * @return \Symfony\Component\HttpFoundation\Response
 	 * @route ("/article/add", name="addArticle")
 	 */
-	    public function addArticle(Request $request)
+	    public function addArticle(Request $request, Slugify $slugify)
     {
 	
 	    $article = new Article();
@@ -58,6 +59,10 @@ class ArticleController extends AbstractController
 	    if($form->isSubmitted() && $form->isValid())
 	    {
 		    $article = $form->getData();
+		    
+		    //*
+		    $article->setSlug($slugify->generate($article->getTitle()));
+		    
 		    $EntityManager = $this->getDoctrine()->getManager();
 		    $EntityManager->persist($article);
 		    $EntityManager->flush();
